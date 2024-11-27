@@ -25,12 +25,10 @@ const addtodo = (e)=>{
   {id:8,title:'javascript 수업듣기', checked:false}
 ])
 
-const toggleCheckbox = (id,checked)=>{
+rconst toggleCheckbox = ({id, checked})=>{
   const idx = todos.findIndex((todo) => todo.id === id);
-  if (idx !== -1){
-    todos[idx].checked = checked
-  }
-  console.log(id, checked);
+  todos[idx].checked = checked
+  // console.log(id, checked, todos);
 }
 
 </script>
