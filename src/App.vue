@@ -18,17 +18,25 @@ const addtodo = (e)=>{
   {id:1,title:'수업 강의 다시 듣기', checked:false},
   {id:2,title:'이력서 다시 쓰기', checked:false},
   {id:3,title:'React 이력서 Page만들기', checked:false},
-  {id:4,title:'프로젝트 깃허브 Readme달기', checked:false},
-  {id:5,title:'3차 깃허브 수정부분 수정하기', checked:false},
-  {id:6,title:'Vue 강의듣기', checked:false},
-  {id:7,title:'CS 수업 듣기', checked:false},
-  {id:8,title:'javascript 수업듣기', checked:false}
+  // {id:4,title:'프로젝트 깃허브 Readme달기', checked:false},
+  // {id:5,title:'3차 깃허브 수정부분 수정하기', checked:false},
+  // {id:6,title:'Vue 강의듣기', checked:false},
+  // {id:7,title:'CS 수업 듣기', checked:false},
+  // {id:8,title:'javascript 수업듣기', checked:false},
 ])
 
-rconst toggleCheckbox = ({id, checked})=>{
+const toggleCheckbox = ({id, checked})=>{
   const idx = todos.findIndex((todo) => todo.id === id);
   todos[idx].checked = checked
   // console.log(id, checked, todos);
+}
+
+const todoDelete = ({id})=>{
+  if(window.confirm('정말 삭제할까요')){
+    const idx = todos.findIndex(todo => todo.id === id);
+    todos.splice(idx,1);
+  }
+  todoText.value= '';
 }
 
 </script>
@@ -47,6 +55,7 @@ rconst toggleCheckbox = ({id, checked})=>{
   :key="todo.id"
   :todo="todo"
   @toggle-checkbox="toggleCheckbox"
+  @todo-delete="todoDelete"
  />
 
  </div>
